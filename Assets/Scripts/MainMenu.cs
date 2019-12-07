@@ -30,7 +30,10 @@ public class MainMenu : MonoBehaviour
             Debug.Log(chickenIndex);
 
             if (chickenIndex != 0)
+            {
+                GameManager.Instance.ChickenIndex = chickenIndex;
                 SceneManager.LoadScene(1);
+            }
         }
     }
 
@@ -53,12 +56,10 @@ public class MainMenu : MonoBehaviour
         return 0;
     }
 
-    public void StartLevel(int level)
+    public void ShowArrowsAboveChickens()
     {
         whiteChickenArrow.SetActive(true);
         yellowChickenArrow.SetActive(true);
-
-        // SceneManager.LoadScene(level);
     }
 
     public void ShowOptions()

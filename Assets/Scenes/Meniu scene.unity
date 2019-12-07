@@ -127,20 +127,6 @@ GameObject:
     type: 3}
   m_PrefabInstance: {fileID: 571083815}
   m_PrefabAsset: {fileID: 0}
---- !u!64 &238332353
-MeshCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 238332350}
-  m_Material: {fileID: 0}
-  m_IsTrigger: 0
-  m_Enabled: 1
-  serializedVersion: 3
-  m_Convex: 0
-  m_CookingOptions: 14
-  m_Mesh: {fileID: 4300000, guid: d623cd35a78380d4eb0457c4e483abed, type: 3}
 --- !u!1001 &442685179
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -148,6 +134,16 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 1981009580}
     m_Modifications:
+    - target: {fileID: -1718086382233301091, guid: ca9fda2f4d77c4d4f88d4ed8b939f69b,
+        type: 3}
+      propertyPath: m_UseGravity
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: -1718086382233301091, guid: ca9fda2f4d77c4d4f88d4ed8b939f69b,
+        type: 3}
+      propertyPath: m_IsKinematic
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 1767663768970106, guid: ca9fda2f4d77c4d4f88d4ed8b939f69b, type: 3}
       propertyPath: m_Name
       value: Toon Chick
@@ -213,11 +209,6 @@ PrefabInstance:
       value: 5
       objectReference: {fileID: 0}
     - target: {fileID: 95777776565643564, guid: ca9fda2f4d77c4d4f88d4ed8b939f69b,
-        type: 3}
-      propertyPath: m_Enabled
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 137113936749643618, guid: ca9fda2f4d77c4d4f88d4ed8b939f69b,
         type: 3}
       propertyPath: m_Enabled
       value: 1
@@ -413,6 +404,16 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 1490191682}
     m_Modifications:
+    - target: {fileID: 3959621594813062771, guid: 312b31977ed9b2d48a14849ebb8c7fb3,
+        type: 3}
+      propertyPath: m_UseGravity
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3959621594813062771, guid: 312b31977ed9b2d48a14849ebb8c7fb3,
+        type: 3}
+      propertyPath: m_IsKinematic
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 1311290861401530, guid: 312b31977ed9b2d48a14849ebb8c7fb3, type: 3}
       propertyPath: m_Name
       value: Toon Chicken
@@ -730,20 +731,6 @@ GameObject:
     type: 3}
   m_PrefabInstance: {fileID: 442685179}
   m_PrefabAsset: {fileID: 0}
---- !u!64 &1324931087
-MeshCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1324931086}
-  m_Material: {fileID: 0}
-  m_IsTrigger: 0
-  m_Enabled: 1
-  serializedVersion: 3
-  m_Convex: 0
-  m_CookingOptions: 14
-  m_Mesh: {fileID: 4300000, guid: e305663a1d36e9c469b164b3b8094239, type: 3}
 --- !u!1 &1334212482
 GameObject:
   m_ObjectHideFlags: 0
@@ -1433,7 +1420,7 @@ PrefabInstance:
     - target: {fileID: 7026697273807075486, guid: b13487c5269b0a44096de05ef5da15a1,
         type: 3}
       propertyPath: m_SizeDelta.y
-      value: -738
+      value: 30
       objectReference: {fileID: 0}
     - target: {fileID: 7026697273807075486, guid: b13487c5269b0a44096de05ef5da15a1,
         type: 3}
@@ -1443,7 +1430,7 @@ PrefabInstance:
     - target: {fileID: 7026697273807075486, guid: b13487c5269b0a44096de05ef5da15a1,
         type: 3}
       propertyPath: m_AnchorMin.y
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 7026697273807075486, guid: b13487c5269b0a44096de05ef5da15a1,
         type: 3}
@@ -1473,7 +1460,7 @@ PrefabInstance:
     - target: {fileID: 7026697273807075485, guid: b13487c5269b0a44096de05ef5da15a1,
         type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Mode
-      value: 3
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 7026697273807075485, guid: b13487c5269b0a44096de05ef5da15a1,
         type: 3}
@@ -1488,7 +1475,7 @@ PrefabInstance:
     - target: {fileID: 7026697273807075485, guid: b13487c5269b0a44096de05ef5da15a1,
         type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
-      value: StartLevel
+      value: ShowArrowsAboveChickens
       objectReference: {fileID: 0}
     - target: {fileID: 7026697273807075485, guid: b13487c5269b0a44096de05ef5da15a1,
         type: 3}

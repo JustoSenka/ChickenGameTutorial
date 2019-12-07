@@ -4,33 +4,36 @@ using UnityEngine;
 
 public class CameraController : MonoBehaviour
 {
-    public GameObject ToonChick;
-    public GameObject ToonChicken;
+    public GameObject ToonChickPrefab;
+    public GameObject ToonChickenPrefab;
     
-    public Transform GameObject;
+    private Transform ChickenTransform;
 
+    [Space(30)]
     public Vector3 lookOffset = new Vector3(0, 1, 0);
     public float distance = 5f;//distance between camera and player position
     public float cameraSpeed = 8f;//speed of camera
-    private float offset;
 
     public void Start()
     {
-        if (chickenIndex == 1)
+        if (GameManager.Instance.ChickenIndex == 1)
         {
-            GameObject = Instantiate(ToonChicken.Load("ToonChicken", typeof(GameObject))) as GameObject;
+            ChickenTransform = Instantiate(ToonChickenPrefab).transform;
         }
-
-        else (chickenIndex == 2){
-            GameObject = Instantiate(Toon Chick.Load("Toon Chick", typeof(GameObject))) as GameObject;
-
+        else if (GameManager.Instance.ChickenIndex == 2)
+        {
+            ChickenTransform = Instantiate(ToonChickPrefab).transform;
+        }
+        else
+        {
+            Debug.LogError("No chicken was selected but scene was still loaded");
         }
     }
 
     public void Update()
     {
-        Vector3 offset = GameObject.position - transform.position;
-        Vector3 lookPosition = GameObject.position + lookOffset;
+        Vector3 offset = ChickenTransform.position - transform.position;
+        Vector3 lookPosition = ChickenTransform.position + lookOffset;
         // look 360 degree
         transform.LookAt(lookPosition);
         if (Vector3.Distance(transform.position, lookPosition) > distance)
@@ -39,7 +42,7 @@ public class CameraController : MonoBehaviour
         }
         if (Vector3.Distance(transform.position, lookPosition) < 1f)
         {
-            transform.position = new Vector3(0, 1, GameObject.position.z + 1f);
+            transform.position = new Vector3(0, 1, ChickenTransform.position.z + 1f);
         }
     }
 }
