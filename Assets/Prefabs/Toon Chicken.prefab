@@ -311,7 +311,6 @@ GameObject:
   - component: {fileID: 95943282229431942}
   - component: {fileID: 5302168169439845796}
   - component: {fileID: 3959621594813062771}
-  - component: {fileID: 8877435148633476645}
   m_Layer: 0
   m_Name: Toon Chicken
   m_TagString: Untagged
@@ -369,9 +368,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8bde0db4e0b1b9c4bb9728e6e7012b6d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  speed: 10
-  isGrounded: 1
+  speed: 0.05
   jumpSpeed: 10
+  rotationSpeed: 2
+  movementLeanAngle: 20
 --- !u!54 &3959621594813062771
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -386,22 +386,8 @@ Rigidbody:
   m_UseGravity: 1
   m_IsKinematic: 0
   m_Interpolate: 0
-  m_Constraints: 0
+  m_Constraints: 112
   m_CollisionDetection: 0
---- !u!64 &8877435148633476645
-MeshCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1311290861401530}
-  m_Material: {fileID: 0}
-  m_IsTrigger: 0
-  m_Enabled: 0
-  serializedVersion: 3
-  m_Convex: 1
-  m_CookingOptions: 14
-  m_Mesh: {fileID: 4300000, guid: d623cd35a78380d4eb0457c4e483abed, type: 3}
 --- !u!1 &1325880688823160
 GameObject:
   m_ObjectHideFlags: 0

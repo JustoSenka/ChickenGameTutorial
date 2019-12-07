@@ -4,6 +4,8 @@ public class PlayerController : MonoBehaviour
 {
     public float speed;
     public float jumpSpeed;
+    public float rotationSpeed;
+    public int movementLeanAngle;
 
     private bool isChickenOnGround;
     private Rigidbody rb;
@@ -16,17 +18,44 @@ public class PlayerController : MonoBehaviour
 
         rb = gameObject.GetComponent<Rigidbody>();
     }
-
+  
     // Update is called once per frame
     void Update()
     {
-        var speedZ = Input.GetAxis("Horizontal");
-        var speedX = Input.GetAxis("Vertical");
+        // Movement
+        var speedForward = Input.GetAxis("Vertical");
+        var directionVector = transform.forward;
 
-        Vector3 movement = new Vector3(speedZ, 0, speedX);
+        var movementVector = directionVector * speedForward;
 
-        rb.AddForce(movement * speed);
+        var currentChickenPos = transform.position;
 
+        var newChickenPosition = currentChickenPos + (movementVector * speed);
+
+        rb.MovePosition(newChickenPosition);
+
+        // Calculate new chicken sideways rotation
+
+        var rotationSpeedY = Input.GetAxis("Horizontal");
+        var degreesToRotate = rotationSpeed * rotationSpeedY;
+
+        var currentChickenRot = transform.rotation.eulerAngles;
+        var eulerAnglesToRotate = new Vector3(0, degreesToRotate, 0);
+
+        var newChickenRotation = currentChickenRot + eulerAnglesToRotate;
+
+        // Apply movement lean forward/backwards
+
+        var leanRotateOnX = speedForward * movementLeanAngle;
+        newChickenRotation = new Vector3(leanRotateOnX, newChickenRotation.y, newChickenRotation.z);
+
+        // Apply final calculated rotation
+
+        var newChickenRotationQuetern = Quaternion.Euler(newChickenRotation);
+        rb.MoveRotation(newChickenRotationQuetern);
+
+
+        // Jumping
         if (Input.GetKey(KeyCode.Space) && isChickenOnGround)
         {
             isChickenOnGround = false;

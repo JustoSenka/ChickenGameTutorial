@@ -522,7 +522,6 @@ GameObject:
   - component: {fileID: 95777776565643564}
   - component: {fileID: 701835089878479451}
   - component: {fileID: -1718086382233301091}
-  - component: {fileID: 2596215264462958260}
   m_Layer: 0
   m_Name: Toon Chick
   m_TagString: Untagged
@@ -580,9 +579,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8bde0db4e0b1b9c4bb9728e6e7012b6d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  speed: 10
-  isGrounded: 1
+  speed: 0.05
   jumpSpeed: 10
+  rotationSpeed: 2
+  movementLeanAngle: 20
 --- !u!54 &-1718086382233301091
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -597,22 +597,8 @@ Rigidbody:
   m_UseGravity: 1
   m_IsKinematic: 0
   m_Interpolate: 0
-  m_Constraints: 0
+  m_Constraints: 112
   m_CollisionDetection: 0
---- !u!64 &2596215264462958260
-MeshCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1767663768970106}
-  m_Material: {fileID: 0}
-  m_IsTrigger: 0
-  m_Enabled: 1
-  serializedVersion: 3
-  m_Convex: 0
-  m_CookingOptions: 14
-  m_Mesh: {fileID: 4300000, guid: e305663a1d36e9c469b164b3b8094239, type: 3}
 --- !u!1 &1878532393300130
 GameObject:
   m_ObjectHideFlags: 0
