@@ -1,4 +1,5 @@
 ﻿using UnityEngine;
+using UnityEngine.UI;
 
 public class PlayerController : MonoBehaviour
 {
@@ -10,6 +11,13 @@ public class PlayerController : MonoBehaviour
     private bool isChickenOnGround;
     private Rigidbody rb;
 
+    private int count;
+    private Text countText;
+
+    private HeartDisplay heartDisplay;
+
+    private int lives = 3;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -17,8 +25,11 @@ public class PlayerController : MonoBehaviour
         jumpSpeed = 3f;
 
         rb = gameObject.GetComponent<Rigidbody>();
+
+        countText = GameObject.FindGameObjectWithTag("EggCounter").GetComponent<Text>();
+        heartDisplay = GameObject.FindObjectOfType<HeartDisplay>();
     }
-  
+
     // Update is called once per frame
     void Update()
     {
@@ -63,6 +74,18 @@ public class PlayerController : MonoBehaviour
         }
     }
 
+    public void ReduceHeart()
+    {
+        lives--;
+        heartDisplay.SetHearts(lives);
+    }
+
+    public void IncrementEggCount()
+    {
+        count++;
+        countText.text = "" + count;
+    }
+
     private void OnCollisionEnter(Collision collision)
     {
         isChickenOnGround = true;
@@ -72,4 +95,5 @@ public class PlayerController : MonoBehaviour
     {
         isChickenOnGround = false;
     }
+
 }
