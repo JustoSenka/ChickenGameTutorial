@@ -1,4 +1,5 @@
-﻿using UnityEngine;
+﻿using System;
+using UnityEngine;
 using UnityEngine.UI;
 
 public class PlayerController : MonoBehaviour
@@ -8,6 +9,9 @@ public class PlayerController : MonoBehaviour
     public float rotationSpeed;
     public int movementLeanAngle;
 
+    public float eggCountToWin=30;
+
+
     private bool isChickenOnGround;
     private Rigidbody rb;
 
@@ -15,6 +19,9 @@ public class PlayerController : MonoBehaviour
     private Text countText;
 
     private HeartDisplay heartDisplay;
+    private EndTextDisplay endTextDisplay;
+    private TimeDisplay timeDisplay;
+
 
     private int lives = 3;
 
@@ -28,15 +35,24 @@ public class PlayerController : MonoBehaviour
 
         countText = GameObject.FindGameObjectWithTag("EggCounter").GetComponent<Text>();
         heartDisplay = GameObject.FindObjectOfType<HeartDisplay>();
+        endTextDisplay = GameObject.FindObjectOfType<EndTextDisplay>();
+        timeDisplay = GameObject.FindObjectOfType<TimeDisplay>();
     }
 
-    // Update is called once per frame
     void Update()
     {
-        // Movement
         var speedForward = Input.GetAxis("Vertical");
-        var directionVector = transform.forward;
 
+        ApplyChickenRotation(speedForward);
+        ApplyChickenMovement(speedForward);
+        ApplyJumping();
+
+        CheckWinningConditions();
+    }
+
+    private void ApplyChickenMovement(float speedForward)
+    {
+        var directionVector = transform.forward;
         var movementVector = directionVector * speedForward;
 
         var currentChickenPos = transform.position;
@@ -44,7 +60,10 @@ public class PlayerController : MonoBehaviour
         var newChickenPosition = currentChickenPos + (movementVector * speed);
 
         rb.MovePosition(newChickenPosition);
+    }
 
+    private void ApplyChickenRotation(float speedForward)
+    {
         // Calculate new chicken sideways rotation
 
         var rotationSpeedY = Input.GetAxis("Horizontal");
@@ -64,9 +83,10 @@ public class PlayerController : MonoBehaviour
 
         var newChickenRotationQuetern = Quaternion.Euler(newChickenRotation);
         rb.MoveRotation(newChickenRotationQuetern);
+    }
 
-
-        // Jumping
+    private void ApplyJumping()
+    {
         if (Input.GetKey(KeyCode.Space) && isChickenOnGround)
         {
             isChickenOnGround = false;
@@ -74,10 +94,32 @@ public class PlayerController : MonoBehaviour
         }
     }
 
+    private void CheckWinningConditions()
+    {
+        var didCollectAllEggs = count >= eggCountToWin; // a
+        var isStillAlive = lives > 0; // b
+        var didTimeRunOut = timeDisplay.timeLeftSeconds <= 0; // c
+
+        if (didTimeRunOut && didCollectAllEggs && isStillAlive)
+        {
+            endTextDisplay.ShowWinText();
+        }
+
+        if (didTimeRunOut && (!didCollectAllEggs || !isStillAlive))
+        {
+            endTextDisplay.ShowLoseText();
+        }
+    }
+
     public void ReduceHeart()
     {
         lives--;
         heartDisplay.SetHearts(lives);
+
+        if (lives <= 0)
+        {
+            endTextDisplay.ShowLoseText();
+        }
     }
 
     public void IncrementEggCount()
@@ -97,3 +139,47 @@ public class PlayerController : MonoBehaviour
     }
 
 }
+
+
+/* Bool info
+ * 
+ *  (c & !a) | (c & !b) | (c & !a & !b) = c & (!a | !b) = c & !(a & b)
+ *  
+ * 
+ * t & (t | f) = t
+ * t & t | f = t
+ * t & f | t = 
+ * 
+ * (x & y) | (x & z) = x & (y | z)
+ * a * b + a * c = a(b + c)
+ * 
+ * 
+ * (x | y) & (x | z) = x | (y & z)
+ * (a + b) * (a + c) = ??
+ * 
+ * 
+ * (a | b) | (a & b) = a | b
+ * 
+ * !a | !b = !(a & b)
+ * !a & !b = !(a | b)
+ * 
+ * // explanation
+ * !a | !b : f = !(t & t) : f
+ * !a | !b : t = !(t & f) : t
+ * !a | !b : t = !(f & f) : t
+ * 
+ * 
+ * 
+ * 
+ * t & t = t
+ * t & f = f
+ * f & t = f
+ * f & f = f
+ * 
+ * t | t = t
+ * t | f = t
+ * f | t = t
+ * f | f = f
+ * 
+ * 
+ * */

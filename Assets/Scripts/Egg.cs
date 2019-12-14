@@ -12,5 +12,7 @@ public class Egg : MonoBehaviour
             player.ReduceHeart();
         else
             player.IncrementEggCount();
+
+        Destroy(gameObject);
     }
 }
