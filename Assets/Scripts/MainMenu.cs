@@ -16,11 +16,17 @@ public class MainMenu : MonoBehaviour
     public GameObject whiteChickenCollider;
     public GameObject yellowChickenCollider;
 
+    //Back music
+    public AudioClip backMusic;
+    private AudioSource source;
+
     public void Awake()
    {
         whiteChickenArrow.SetActive(false);
         yellowChickenArrow.SetActive(false);
+
     }
+
 
     public void Update()
     {
@@ -36,6 +42,7 @@ public class MainMenu : MonoBehaviour
             }
         }
     }
+
 
     private int GetClickedChickenIndex()
     {
@@ -61,6 +68,16 @@ public class MainMenu : MonoBehaviour
         whiteChickenArrow.SetActive(true);
         yellowChickenArrow.SetActive(true);
     }
+
+    public void Start()
+    {
+        source = GetComponent<AudioSource>();
+        source.Play();
+
+        Debug.Log("Music is playing");
+        
+    }
+
 
     public void ShowOptions()
     {
