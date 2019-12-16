@@ -583,6 +583,7 @@ MonoBehaviour:
   jumpSpeed: 10
   rotationSpeed: 2
   movementLeanAngle: 20
+  eggCountToWin: 30
 --- !u!54 &-1718086382233301091
 Rigidbody:
   m_ObjectHideFlags: 0

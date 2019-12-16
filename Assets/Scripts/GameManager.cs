@@ -9,4 +9,8 @@
 
     // Light settings, if set to false, no lights will be rendered in the game
     public bool EnableLights;
+
+    public int CurrentLevel;
+
+    public const int LevelCount = 2;
 }

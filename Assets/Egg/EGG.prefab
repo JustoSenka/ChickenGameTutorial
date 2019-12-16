@@ -105,3 +105,5 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ed1fc06728d29be4eb6af3435ab46a56, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  IsRotten: 0
+  soundWhenTaken: {fileID: 8300000, guid: c5cc3d9276bf24f3dae0871bd100f7e5, type: 3}

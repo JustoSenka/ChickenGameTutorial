@@ -3,6 +3,7 @@
 public class Egg : MonoBehaviour
 {
     public bool IsRotten;
+    public AudioClip soundWhenTaken;
 
     private void OnTriggerEnter(Collider other)
     {
@@ -12,6 +13,9 @@ public class Egg : MonoBehaviour
             player.ReduceHeart();
         else
             player.IncrementEggCount();
+
+        var audioPlayer = GameObject.FindObjectOfType<PlayAudio>();
+        audioPlayer.Play(soundWhenTaken);
 
         Destroy(gameObject);
     }

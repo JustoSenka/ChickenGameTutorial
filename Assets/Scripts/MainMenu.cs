@@ -38,6 +38,7 @@ public class MainMenu : MonoBehaviour
             if (chickenIndex != 0)
             {
                 GameManager.Instance.ChickenIndex = chickenIndex;
+                GameManager.Instance.CurrentLevel = 1;
                 SceneManager.LoadScene(1);
             }
         }
@@ -71,11 +72,7 @@ public class MainMenu : MonoBehaviour
 
     public void Start()
     {
-        source = GetComponent<AudioSource>();
-        source.Play();
 
-        Debug.Log("Music is playing");
-        
     }
 
 

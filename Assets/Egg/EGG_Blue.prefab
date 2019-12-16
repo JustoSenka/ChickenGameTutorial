@@ -98,11 +98,6 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
-    - target: {fileID: -7506610790000328319, guid: f43332d2ceb59054db47c97ba32dd05a,
-        type: 3}
-      propertyPath: IsRotten
-      value: 1
-      objectReference: {fileID: 0}
     - target: {fileID: 100000, guid: f43332d2ceb59054db47c97ba32dd05a, type: 3}
       propertyPath: m_Name
       value: EGG_Blue
@@ -155,6 +150,16 @@ PrefabInstance:
       propertyPath: m_Materials.Array.data[0]
       value: 
       objectReference: {fileID: 2100000, guid: c59dcfd08d41a6248999c5584dbec123, type: 2}
+    - target: {fileID: -7506610790000328319, guid: f43332d2ceb59054db47c97ba32dd05a,
+        type: 3}
+      propertyPath: IsRotten
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: -7506610790000328319, guid: f43332d2ceb59054db47c97ba32dd05a,
+        type: 3}
+      propertyPath: soundWhenTaken
+      value: 
+      objectReference: {fileID: 8300000, guid: 4c6de4589e76e4aabb833c14ad9cdc0f, type: 3}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: f43332d2ceb59054db47c97ba32dd05a, type: 3}
 --- !u!4 &1556269159031020747 stripped

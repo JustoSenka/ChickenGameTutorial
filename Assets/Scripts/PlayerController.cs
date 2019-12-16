@@ -1,5 +1,7 @@
 ﻿using System;
+using System.Collections;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 using UnityEngine.UI;
 
 public class PlayerController : MonoBehaviour
@@ -9,7 +11,7 @@ public class PlayerController : MonoBehaviour
     public float rotationSpeed;
     public int movementLeanAngle;
 
-    public float eggCountToWin=30;
+    public float eggCountToWin = 30;
 
 
     private bool isChickenOnGround;
@@ -103,12 +105,29 @@ public class PlayerController : MonoBehaviour
         if (didTimeRunOut && didCollectAllEggs && isStillAlive)
         {
             endTextDisplay.ShowWinText();
+            // prideti reikia ilgesni parodyma info+jei antram lygy laimime tik tekstas turi buti joks loadinimas
+
+            if (GameManager.Instance.CurrentLevel < GameManager.LevelCount)
+            {
+                var iterator = LoadNewSceneAfterSeconds(2);
+                StartCoroutine(iterator);
+
+                // StartCoroutine(LoadNewSceneAfterSeconds(2)); // same syntax
+            }
         }
 
         if (didTimeRunOut && (!didCollectAllEggs || !isStillAlive))
         {
             endTextDisplay.ShowLoseText();
         }
+    }
+
+    private IEnumerator LoadNewSceneAfterSeconds(int secondsToWait)
+    {
+        yield return new WaitForSeconds(secondsToWait);
+
+        GameManager.Instance.CurrentLevel++;
+        SceneManager.LoadScene(GameManager.Instance.CurrentLevel);
     }
 
     public void ReduceHeart()
