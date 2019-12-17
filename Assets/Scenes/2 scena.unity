@@ -445,7 +445,7 @@ GameObject:
   - component: {fileID: 1188337345}
   - component: {fileID: 1188337344}
   m_Layer: 0
-  m_Name: Foreground Terrain
+  m_Name: Foreground Terrain 02
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
