@@ -24,6 +24,7 @@ public class PlayerController : MonoBehaviour
     private EndTextDisplay endTextDisplay;
     private TimeDisplay timeDisplay;
 
+    private bool didFinishGame;
 
     private int lives = 3;
 
@@ -43,6 +44,9 @@ public class PlayerController : MonoBehaviour
 
     void Update()
     {
+        if (didFinishGame)
+            return;
+
         var forwardAxisSpeed = Input.GetAxis("Vertical");
 
         ApplyChickenRotation(forwardAxisSpeed);
@@ -105,6 +109,7 @@ public class PlayerController : MonoBehaviour
 
         if (didTimeRunOut && didCollectAllEggs && isStillAlive)
         {
+            didFinishGame = true;
             endTextDisplay.ShowWinText();
             // prideti reikia ilgesni parodyma info+jei antram lygy laimime tik tekstas turi buti joks loadinimas
 

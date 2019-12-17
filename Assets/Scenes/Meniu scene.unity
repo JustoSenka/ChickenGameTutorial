@@ -699,7 +699,6 @@ MonoBehaviour:
   yellowChickenArrow: {fileID: 1037585032927129926}
   whiteChickenCollider: {fileID: 238332350}
   yellowChickenCollider: {fileID: 1324931086}
-  backMusic: {fileID: 8300000, guid: 05a1c34c5855e0a4683bc207a6822ced, type: 3}
   OptionsPanel: {fileID: 427673062}
   SoundToggle: {fileID: 666826141}
   LightsToggle: {fileID: 666826141}
@@ -2276,7 +2275,7 @@ PrefabInstance:
     - target: {fileID: 4277305653876690638, guid: ca1e158c7280f8b418f63ebc21b0daf5,
         type: 3}
       propertyPath: m_Text
-      value: Fonine Muzika
+      value: "Fonin\u0117 Muzika"
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: ca1e158c7280f8b418f63ebc21b0daf5, type: 3}

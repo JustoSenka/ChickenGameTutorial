@@ -1223,7 +1223,7 @@ GameObject:
   - component: {fileID: 567172984}
   - component: {fileID: 567172983}
   m_Layer: 0
-  m_Name: Terrain (1)
+  m_Name: Background Terrain
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -4265,7 +4265,7 @@ GameObject:
   - component: {fileID: 2095331222}
   - component: {fileID: 2095331221}
   m_Layer: 0
-  m_Name: Terrain
+  m_Name: Foreground Terrain
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -4744,6 +4744,16 @@ PrefabInstance:
     - target: {fileID: 3089792186629157352, guid: ce2c9e6c86664a44b9426b25b06efa66,
         type: 3}
       propertyPath: m_Pivot.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2920176434298512247, guid: ce2c9e6c86664a44b9426b25b06efa66,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 931169147976235150, guid: ce2c9e6c86664a44b9426b25b06efa66,
+        type: 3}
+      propertyPath: m_IsActive
       value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
