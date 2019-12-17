@@ -38,7 +38,9 @@ public class CameraController : MonoBehaviour
         transform.LookAt(lookPosition);
         if (Vector3.Distance(transform.position, lookPosition) > distance)
         {
-            transform.Translate(0, 0, cameraSpeed * Time.deltaTime);
+            var diffInDistance = Vector3.Distance(transform.position, lookPosition) - distance;
+            var movementDueToSpeed = cameraSpeed * Time.deltaTime;
+            transform.Translate(0, 0, Mathf.Min(diffInDistance, movementDueToSpeed));
         }
         if (Vector3.Distance(transform.position, lookPosition) < 1f)
         {
