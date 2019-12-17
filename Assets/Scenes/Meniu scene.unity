@@ -700,7 +700,7 @@ MonoBehaviour:
   whiteChickenCollider: {fileID: 238332350}
   yellowChickenCollider: {fileID: 1324931086}
   OptionsPanel: {fileID: 427673062}
-  SoundToggle: {fileID: 666826141}
+  SoundToggle: {fileID: 7703600314942995115}
   LightsToggle: {fileID: 666826141}
 --- !u!82 &556046686
 AudioSource:
@@ -2279,3 +2279,15 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: ca1e158c7280f8b418f63ebc21b0daf5, type: 3}
+--- !u!114 &7703600314942995115 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 3673522275619542090, guid: ca1e158c7280f8b418f63ebc21b0daf5,
+    type: 3}
+  m_PrefabInstance: {fileID: 7703600314942995114}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9085046f02f69544eb97fd06b6048fe2, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 

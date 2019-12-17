@@ -8,6 +8,8 @@ public class Egg : MonoBehaviour
     private void OnTriggerEnter(Collider other)
     {
         var player = other.transform.parent.GetComponent<PlayerController>();
+        if (!player)
+            return;
 
         if (IsRotten)
             player.ReduceHeart();
