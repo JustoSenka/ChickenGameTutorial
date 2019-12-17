@@ -4,6 +4,8 @@ using UnityEngine;
 using UnityEngine.SceneManagement;
 #if UNITY_EDITOR
 using UnityEditor;
+using UnityEngine.UI;
+
 #endif
 
 public class MainMenu : MonoBehaviour
@@ -16,15 +18,20 @@ public class MainMenu : MonoBehaviour
     public GameObject whiteChickenCollider;
     public GameObject yellowChickenCollider;
 
-    //Back music
-    public AudioClip backMusic;
-    private AudioSource source;
+    public GameObject OptionsPanel;
+    public Toggle SoundToggle;
+    public Toggle LightsToggle;
+
+    private AudioSource audioSource;
 
     public void Awake()
-   {
+    {
         whiteChickenArrow.SetActive(false);
         yellowChickenArrow.SetActive(false);
 
+        OptionsPanel.SetActive(false);
+
+        audioSource = gameObject.GetComponent<AudioSource>();
     }
 
 
@@ -75,13 +82,17 @@ public class MainMenu : MonoBehaviour
 
     }
 
-
-    public void ShowOptions()
+    public void ShowOptions(bool isVisible)
     {
+        OptionsPanel.SetActive(isVisible);
+    }
 
+    public void OptionsChanged()
+    {
+        GameManager.Instance.IsSoundOn = SoundToggle.isOn;
+        GameManager.Instance.IsLightsOn = LightsToggle.isOn;
 
-
-
+        audioSource.mute = !SoundToggle.isOn;
     }
 
     public void Quit()
