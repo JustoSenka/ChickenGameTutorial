@@ -6,7 +6,7 @@ using UnityEngine.UI;
 
 public class PlayerController : MonoBehaviour
 {
-    public float speed;
+    public float runningSpeed;
     public float jumpSpeed;
     public float rotationSpeed;
     public int movementLeanAngle;
@@ -43,33 +43,34 @@ public class PlayerController : MonoBehaviour
 
     void Update()
     {
-        var speedForward = Input.GetAxis("Vertical");
+        var forwardAxisSpeed = Input.GetAxis("Vertical");
 
-        ApplyChickenRotation(speedForward);
-        ApplyChickenMovement(speedForward);
+        ApplyChickenRotation(forwardAxisSpeed);
+        ApplyChickenMovement(forwardAxisSpeed);
         ApplyJumping();
 
         CheckWinningConditions();
     }
 
-    private void ApplyChickenMovement(float speedForward)
+    private void ApplyChickenMovement(float forwardAxisSpeed)
     {
         var directionVector = transform.forward;
-        var movementVector = directionVector * speedForward;
+        var movementVector = directionVector * forwardAxisSpeed;
 
-        var currentChickenPos = transform.position;
+        // Multiplying movement direction with speed and delta time to make it frame time independent
+        movementVector = movementVector * runningSpeed * Time.deltaTime;
 
-        var newChickenPosition = currentChickenPos + (movementVector * speed);
+        var newChickenPosition = transform.position + movementVector;
 
         rb.MovePosition(newChickenPosition);
     }
 
-    private void ApplyChickenRotation(float speedForward)
+    private void ApplyChickenRotation(float forwardAxisSpeed)
     {
         // Calculate new chicken sideways rotation
 
         var rotationSpeedY = Input.GetAxis("Horizontal");
-        var degreesToRotate = rotationSpeed * rotationSpeedY;
+        var degreesToRotate = rotationSpeed * rotationSpeedY * Time.deltaTime;
 
         var currentChickenRot = transform.rotation.eulerAngles;
         var eulerAnglesToRotate = new Vector3(0, degreesToRotate, 0);
@@ -78,7 +79,7 @@ public class PlayerController : MonoBehaviour
 
         // Apply movement lean forward/backwards
 
-        var leanRotateOnX = speedForward * movementLeanAngle;
+        var leanRotateOnX = forwardAxisSpeed * movementLeanAngle;
         newChickenRotation = new Vector3(leanRotateOnX, newChickenRotation.y, newChickenRotation.z);
 
         // Apply final calculated rotation
