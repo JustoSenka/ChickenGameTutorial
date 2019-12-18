@@ -22,6 +22,8 @@ public class MainMenu : MonoBehaviour
     public Toggle SoundToggle;
     public Toggle LightsToggle;
 
+    public Light gameLight;
+
     private AudioSource audioSource;
 
     public void Awake()
@@ -93,6 +95,8 @@ public class MainMenu : MonoBehaviour
         GameManager.Instance.IsLightsOn = LightsToggle.isOn;
 
         audioSource.mute = !SoundToggle.isOn;
+
+        gameLight.enabled = LightsToggle.isOn;
     }
 
     public void Quit()

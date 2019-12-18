@@ -702,6 +702,7 @@ MonoBehaviour:
   OptionsPanel: {fileID: 427673062}
   SoundToggle: {fileID: 7703600314942995115}
   LightsToggle: {fileID: 666826141}
+  gameLight: {fileID: 1767201003}
 --- !u!82 &556046686
 AudioSource:
   m_ObjectHideFlags: 0

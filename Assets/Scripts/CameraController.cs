@@ -1,17 +1,20 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class CameraController : MonoBehaviour
 {
     public GameObject ToonChickPrefab;
     public GameObject ToonChickenPrefab;
-    
+
+    public Light gameLight;
+
     private Transform ChickenTransform;
 
     [Space(30)]
     public Vector3 lookOffset = new Vector3(0, 1, 0);
-    public float distance = 5f;//distance between camera and player position
+    public float distance = 5f;   //distance between camera and player position
     public float cameraSpeed = 8f;//speed of camera
 
     public void Start()
@@ -28,6 +31,8 @@ public class CameraController : MonoBehaviour
         {
             Debug.LogError("No chicken was selected but scene was still loaded");
         }
+
+        gameLight.enabled = GameManager.Instance.IsLightsOn;
     }
 
     public void Update()

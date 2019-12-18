@@ -4978,6 +4978,11 @@ PrefabInstance:
       propertyPath: m_Enabled
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 7479257233514277991, guid: 2ce2ad38dd69715409c7b735054841cf,
+        type: 3}
+      propertyPath: gameLight
+      value: 
+      objectReference: {fileID: 2025258022}
     - target: {fileID: 7479257233514277992, guid: 2ce2ad38dd69715409c7b735054841cf,
         type: 3}
       propertyPath: Loop
