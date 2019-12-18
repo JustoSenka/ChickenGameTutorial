@@ -17,7 +17,14 @@ public class Egg : MonoBehaviour
             player.IncrementEggCount();
 
         var audioPlayer = GameObject.FindObjectOfType<PlayAudio>();
-        audioPlayer.Play(soundWhenTaken);
+        if (audioPlayer)
+        {
+            audioPlayer.Play(soundWhenTaken);
+        }
+        else
+        {
+            Debug.LogError("Egg cannot play sounds because PlayAudio is not in the scene");
+        }
 
         Destroy(gameObject);
     }
